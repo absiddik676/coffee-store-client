@@ -3,10 +3,10 @@
 import React from 'react';
 import { AiFillEye } from "react-icons/ai";
 import { HiPencil, HiTrash } from "react-icons/hi";
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const CoffeeCard = ({ coffee }) => {
-    console.log(coffee);
+const CoffeeCard = ({ coffee,setCoffees,coffees }) => {
     const { name, chef, Price, taste, Photo, details, category, _id } = coffee;
     const handelaDelete = (id) => {
         console.log(id);
@@ -20,8 +20,6 @@ const CoffeeCard = ({ coffee }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-
-
                 fetch(`http://localhost:5000/coffee/${id}`, {
                     method: 'DELETE'
                 })
@@ -34,6 +32,9 @@ const CoffeeCard = ({ coffee }) => {
                                 'success'
                             )
                         }
+                        const reaming = coffees.filter(coffee => coffee._id !== id)
+                        setCoffees(reaming)
+                        console.log(reaming);
                     })
             }
         })
@@ -55,7 +56,7 @@ const CoffeeCard = ({ coffee }) => {
                         <AiFillEye className='text-2xl text-white' />
                     </div>
                     <div className='p-1 my-4 rounded-sm bg-[#3C393B]'>
-                        <HiPencil className='text-2xl text-white' />
+                        <Link to={`updateCoffee/${_id}`}><HiPencil className='text-2xl text-white' /></Link>
                     </div>
                     <div className='p-1 rounded-sm bg-[#EA4744]'>
                         <button onClick={() => handelaDelete(_id)}><HiTrash className='text-2xl text-white' /></button>
