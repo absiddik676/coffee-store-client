@@ -5,10 +5,10 @@ import logo from '../assets/images/more/logo1.png'
 
 const Navbar = () => {
     return (
-        <div className='h-14 bg-cover mt-0 w-full bg-no-repeat' style={{ backgroundImage: `url(${bgimg})` }}>
-            <div className='flex justify-center items-center'>
+        <div className=' bg-cover mt-0 w-full bg-no-repeat' style={{ backgroundImage: `url(${bgimg})` }}>
+            <div className='flex h-14 justify-center items-center'>
             <img className='w-10' src={logo} alt="" />
-            <h1 className='text-white text-2xl font-semibold ml-5'>Espresso Emporium</h1>
+            <h1 className='text-white text-4xl ml-5' style={{ fontFamily: 'Rancho'}} >Espresso Emporium</h1>
             </div>
         </div>
     );
